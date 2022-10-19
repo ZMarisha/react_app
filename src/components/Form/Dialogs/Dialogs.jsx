@@ -1,9 +1,11 @@
+import { useTheme } from '@emotion/react';
 import d from './Dialogs.module.css';
 
 const Dialogs = ({text, author, date, time}) => {
-
+console.log(author)
+const theme = useTheme()
   return (
-    <div className={d.dialogs}>
+    <div className={d.dialogs} style={{border: theme.palette.primary.border}}>
       <p className={d.text}>{text}</p>
       <div className={d.blockAuthor}>
         <div>

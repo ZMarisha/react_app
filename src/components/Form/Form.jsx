@@ -1,23 +1,25 @@
 import d from './Form.module.css'
 import Dialogs from "./Dialogs/Dialogs";
-import { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { Button } from '@mui/material';
 
 const Form = ({message, setMessage, setMessageList, messageList, addDate, addTime}) => {
 
   const ROBOT = 'Hi! I am Robot. I got your message!';
+  const {text, author} = message;
+  const textareaRef = useRef(null);
     
-  let changText = (e) => {
+  let changeText = (e) => {
     setMessage(prev => ({...prev, text: e.target.value}))
   }
     
-  let changAuthor = (e) => {
-    setMessage(prev => ({...prev, author: e.target.value}));
-  }
-    
-  let {text, author} = message;
+//   let changeAuthor = (e) => {
+//     setMessage(prev => ({...prev, author: e.target.value}));
+//   }
     
   let postDate = addDate()
   let postTime = addTime()
+
 
   let addPost = (e) => {
     e.preventDefault();
@@ -26,29 +28,38 @@ const Form = ({message, setMessage, setMessageList, messageList, addDate, addTim
     }
     setMessage({
       text: '',
-      author: ''
     })
   }
 
-   
+  useEffect(() => {
+    textareaRef.current.focus()
+  })
 
   useEffect(() => {
+    console.log('effect')
+
+
     if (messageList.length > 0 && messageList.slice(-1)[0].author !== 'ROBOT') {
       setTimeout(() => setMessageList(prev => ([...prev, {author: 'ROBOT', text: ROBOT, date: postDate, time: postTime}])), 1500)
       }
     }, [setMessageList, messageList, postDate, postTime])
+
     
   return (
-    <div>
+    <div className={d.main}>
       <h1>Dialogs</h1>
       <form className={d.form} onSubmit={addPost} >
-        <textarea onChange={changText} value={message.text} placeholder='input your message...'/>
-        <input onChange={changAuthor} value={message.author} placeholder='author' maxLength={18}/>
+        <textarea ref={textareaRef} onChange={changeText} value={message.text} placeholder='input your message...' />
         <div className={d.btnSend}>
-          <button className={d.btn} type='submit'>Send</button>
+          <Button variant='contained' size='large' sx={{ fontWeight: '600', width: '120px', marginTop: '50px' }} type='submit'>SEND</Button>
         </div>
       </form>
-      {messageList.map((el, index) => [<Dialogs text={el.text} author={el.author} date={el.date} time={el.time} key={index} />])}
+      <div>{messageList.map((el, index) => [<Dialogs text={el.text} 
+                                                      author={el.author} 
+                                                      date={el.date} 
+                                                      time={el.time} 
+                                                      key={index} />])}
+      </div>
     </div>
   )
 }

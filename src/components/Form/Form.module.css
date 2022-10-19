@@ -9,31 +9,20 @@
     font-size: 24px;
     padding: 30px;
     border: none;
-    width: 1140px;
     box-sizing: border-box;
 }
-.form input {
+/* .form input {
     height: 40px;
     width: 300px;
     padding: 10px;
     font-size: 24px;
     box-sizing: border-box;
     margin-top: 30px;
-}
+} */
 .btnSend {
     display: flex;
     justify-content: flex-end;
 }
-.btn {
-    text-align: center;
-    width: 120px;
-    background: #44C553;
-    height: 40px;
-    line-height: 40px;
-    box-sizing: border-box;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 20px;
-    border: none;
-}
+.main {
+    grid-area: c;
+  }

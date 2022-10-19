@@ -2,35 +2,16 @@
   margin: 0;
   padding: 0;
 }
-
 .container {
   margin: 0 auto;
   max-width: 1140px;
 }
-
-.parent {
+.app-wrapper {
   display: grid;
-  justify-content: center;
+  grid-template-areas: 
+  "h h"
+  "n c";
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 2fr 10fr;
+  gap: 30px;
 }
-
-.App {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
