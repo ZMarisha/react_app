@@ -3,5 +3,21 @@
     padding-left: 15px;
     padding-top: 15px;
     min-height: 650px;
-    width: 200px;
+    width: 180px;
+  }
+  .item {
+    color: #F0F2F6;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .active {
+    color: black;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .block {
+    margin-bottom: 10px;
+  }
+  .settingNavBar {
+    padding-top: 50px;
   }
