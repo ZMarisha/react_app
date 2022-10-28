@@ -5,7 +5,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import d from './MyFriends.module.css';
 import { NavLink } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, Dialog } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useTheme } from '@emotion/react';
+
 
 
 const MyFriends = () => {
@@ -20,11 +23,16 @@ const MyFriends = () => {
     ])
     
     const [friend, setFriend] = useState({id: 7, name: 'Bars', src: 'https://klike.net/uploads/posts/2019-03/1551511774_9.jpg'})
+    const theme = useTheme();
 
     const addFriends = (e)=> {
     e.preventDefault();
     
     setDialogs(prev => ([...prev, friend]));
+    }
+
+    const deleteFriend = (el) => {
+        setDialogs(dialogs.filter(obj => obj.id !== el))
     }
 
 
@@ -33,20 +41,21 @@ const MyFriends = () => {
             <h1 className={d.headering}>My friends</h1>
             <div className={d.navBar}>
             {dialogs.map((el, index) => [
-                <div key={index}>
+                <div key={index} className={d.border} style={{border: theme.palette.primary.border}} >
                     <NavLink to={`${el.id}`} className={d.link}>
                         <ListItem>
                             <ListItemAvatar>
                                  <Avatar src={el.src} />
                             </ListItemAvatar>
                             <ListItemText primary={el.name} sx={{color: '#212121'}} />
+                            <DeleteForeverIcon onClick={() => deleteFriend(el.id)} sx={{ marginLeft: '20px', color: '#212121' }} 
+                            type='submit' />
                         </ListItem>
                      </NavLink>
                 </div>
             ])}
-            <Button variant='contained' size='large' sx={{ fontWeight: '600', width: '60px', marginTop: '30px', fontSize: '24px', height: '60px', borderRadius: '50%' }} 
-            type='submit' onClick={addFriends}>+</Button>
-                
+             <Button variant='contained' size='large' sx={{ fontWeight: '600', minWidth: '25px', fontSize: '16px', height: '50px', marginTop: '30px'}} 
+                type='submit' onClick={addFriends}>+</Button>
             </div>
         </div>
     )

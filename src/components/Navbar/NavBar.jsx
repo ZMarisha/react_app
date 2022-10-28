@@ -9,11 +9,6 @@ const NavBar = () => {
 
     const setActive = ({isActive}) => isActive ? d.active: d.item
     const theme = useTheme()
-//     const [dialogs, setDialogs] = useState([
-//     {id: 1, name: 'Anna', src: 'https://klike.net/uploads/posts/2019-03/1551511851_21.jpg'},
-//     {id: 2, name: 'Valeria', src: 'https://klike.net/uploads/posts/2019-03/1551511784_4.jpg'},
-//     {id: 3, name: 'Nikita', src: 'https://klike.net/uploads/posts/2019-03/1551515501_13.jpg'},
-// ])
 
     return (
       <nav className={d.navBar} style={{background: theme.palette.primary.main}}>

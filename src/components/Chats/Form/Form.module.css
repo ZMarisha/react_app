@@ -9,22 +9,14 @@
     align-self: flex-end;
 }
 .form textarea {
-    min-height: 140px;
+    min-height: 120px;
     background: #F0F2F6;
-    font-size: 24px;
-    padding: 30px;
+    font-size: 20px;
+    padding: 15px;
     border: none;
     box-sizing: border-box;
     align-self: flex-end;
 }
-/* .form input {
-    height: 40px;
-    width: 300px;
-    padding: 10px;
-    font-size: 24px;
-    box-sizing: border-box;
-    margin-top: 30px;
-} */
 .btnSend {
     display: flex;
     justify-content: flex-end;

@@ -5,6 +5,7 @@ import d from './Chats.module.css'
 
 const Chats = ({message, setMessage, setMessageList, messageList, addDate, addTime}) => {
 
+
   return (
     <div className={d.dialogs}>
       <MyFriends />
@@ -15,7 +16,6 @@ const Chats = ({message, setMessage, setMessageList, messageList, addDate, addTi
             addDate={addDate} 
             addTime={addTime}
         />
-      
     </div>
     
   )
