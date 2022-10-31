@@ -1,11 +1,18 @@
 import './App.css';
 import React, {useState}from 'react';
-import Form from './components/Form/Form';
+// import Form from './components/Form/Form';
 import NavBar from './components/Navbar/NavBar.jsx';
 import Header from './components/Header/Header';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme} from '@mui/material/styles';
 import { Button } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Profile from './components/Profile/Profile.jsx';
+import Chats from './components/Chats/Chats.jsx';
+import Settings from './components/Settings/Settings';
+import NotFound from './components/NotFound/NotFound.jsx';
+import Home from './components/Home/Home';
+
 
 
 
@@ -26,7 +33,7 @@ const lightTheme = createTheme({
     primary: {
         main: '#64b5f6',
         text: '#212121',
-        border: '2px solid #64b5f6'
+        border: '2px solid #64b5f6',
       },
     }
   })
@@ -39,7 +46,8 @@ const App = () => {
     author: '',
     date: addDate(),
     time: addTime()
-  })
+  });
+  const [myProfile, setMyProfile] = useState('https://klike.net/uploads/posts/2019-03/1551511862_19.jpg')
 
   const [isDark, setIsDark] = useState(true)
 
@@ -62,20 +70,31 @@ const App = () => {
   }
 
   return (
+    <BrowserRouter>
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <div className='container parent app-wrapper'>
-        <Header />
+        <Header myProfile={myProfile}/>
         <NavBar />
-        <Form message={message} 
+        <main className='main'>
+          <Routes>
+            <Route path='/' element={<Home />}/>
+            <Route path='/profile' element={<Profile myProfile={myProfile}/>} />
+            <Route path='/chats' element={<Chats message={message} 
             setMessage={setMessage} 
             setMessageList={setMessageList} 
             messageList={messageList} 
             addDate={addDate} 
-            addTime={addTime}
-        />
-        <Button variant="outlined" sx={{width: '80px', marginBottom: '30px'}} onClick={() => {setIsDark(prev => !prev)}}>Theme</Button>
+            addTime={addTime}/> }>
+              <Route path=':chatId' element={<Chats />}/>
+            </Route>
+            <Route path='/settings' element={<Settings />} />
+            <Route path='*' element={<NotFound />}/>
+          </Routes>
+        </main>
+        <Button variant="outlined" sx={{width: '80px', marginBottom: '30px', marginLeft: '40px'}} onClick={() => {setIsDark(prev => !prev)}}>Theme</Button>
       </div>
       </ThemeProvider>
+    </BrowserRouter>  
   )
 }
 

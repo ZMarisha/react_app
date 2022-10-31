@@ -1,0 +1,15 @@
+.navBar {
+    grid-area: n;
+    padding-top: 15px;
+    min-height: 650px;
+    width: 180px;
+  }
+.headering {
+    padding-left: 16px;
+}
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}

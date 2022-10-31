@@ -1,11 +1,11 @@
 .dialogs {
     display: grid;
-    width: 1140x;
     min-height: 100px;
     max-height: 400px;
     box-sizing: border-box;
     padding: 10px;
     margin-bottom: 20px;
+    margin-right: 50px;
 }
 .blockAuthor {
     display: grid;
@@ -18,5 +18,4 @@
 }
 .mailer  {
     font-weight: 600;
-    margin-right: 10px;
 }

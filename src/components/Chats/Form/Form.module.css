@@ -1,7 +1,12 @@
+.main {
+    margin-top: 52px;
+    display: grid;
+}
 .form {
     margin-top: 50px;
-    margin-bottom: 80px;
     display: grid;
+    margin-right: 50px;
+    align-self: flex-end;
 }
 .form textarea {
     min-height: 140px;
@@ -10,6 +15,7 @@
     padding: 30px;
     border: none;
     box-sizing: border-box;
+    align-self: flex-end;
 }
 /* .form input {
     height: 40px;
@@ -23,6 +29,3 @@
     display: flex;
     justify-content: flex-end;
 }
-.main {
-    grid-area: c;
-  }
