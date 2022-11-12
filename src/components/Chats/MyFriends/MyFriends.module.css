@@ -1,16 +1,18 @@
-.navBar {
-    grid-area: n;
-    padding-top: 15px;
+.parent {
+  padding: 20px 10px 20px 10px;
     min-height: 650px;
-    width: 180px;
+    width: 220px;
   }
+
   .addFriend {
     display: flex;
     align-items: center;
+    
   }
 .headering {
-    padding-left: 16px;
-    font-size: 26px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 .link {
   text-decoration: none;
@@ -21,4 +23,8 @@
 .border {
   border-radius: 20px;
   margin-bottom: 10px;
+}
+.btn {
+  display: flex;
+  justify-content: center;
 }

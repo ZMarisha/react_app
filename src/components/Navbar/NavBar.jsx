@@ -1,28 +1,26 @@
 import React from 'react';
-import d from './NavBar.module.css'
-
-import { NavLink } from 'react-router-dom';
+import d from './NavBar.module.css';
 import { useTheme } from '@emotion/react';
+import CustomLink from '../CustomLink/CustomLink';
 
 
 const NavBar = () => {
 
-    const setActive = ({isActive}) => isActive ? d.active: d.item
-    const theme = useTheme()
+  const theme = useTheme()
 
     return (
       <nav className={d.navBar} style={{background: theme.palette.primary.main}}>
         <div className={d.block}>
-          <NavLink className = {d.item} to='/'>Home</NavLink>
+          <CustomLink to='/'>Home</CustomLink>
         </div>
         <div className={d.block}>
-          <NavLink className = {setActive} to='/profile'>Profile</NavLink>
+          <CustomLink to='/profile'>Profile</CustomLink>
         </div>
         <div className={d.block}>
-          <NavLink className = {setActive} to='/chats'>Chats</NavLink>
+          <CustomLink to='/chats'>Chats</CustomLink>
         </div>
-        <div className={d.settingNavBar}>
-          <NavLink className = {setActive} to='/settings'>Settings</NavLink>
+        <div className={d.block}>
+          <CustomLink to='/settings'>Settings</CustomLink>
         </div>
       </nav>
     )

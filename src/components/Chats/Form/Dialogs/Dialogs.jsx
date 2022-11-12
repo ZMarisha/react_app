@@ -1,20 +1,39 @@
+import React from 'react';
 import { useTheme } from '@emotion/react';
+import { useParams } from 'react-router-dom';
 import d from './Dialogs.module.css';
 
-const Dialogs = ({text, author, date, time}) => {
+
+
+const Dialogs = ({messageList}) => {
+
+  const { chatId } = useParams();
+
+
+  let message1 = messageList.filter(el => chatId === el.id);
+  console.log(messageList)
+  console.log(message1)
   
-const theme = useTheme()
+  const theme = useTheme();
+
+
+
   return (
-    <div className={d.dialogs} style={{border: theme.palette.primary.border}}>
-      <p className={d.text}>{text}</p>
+    <>
+  {message1.map((el, i) => <div key={i} className={d.dialogs} style={{border: theme.palette.primary.border}}>
+
+      <p className={d.text}>{el.text}</p>
       <div className={d.blockAuthor}>
         <div>
-          <p><span className={d.mailer}>Author: </span>{author ? author : 'anonymous'}</p>
-          <p><span className={d.mailer}>Date: </span>{date}</p>
-          <p><span className={d.mailer}>Time: </span>{time}</p>
+          <p><span className={d.mailer}>Author: </span>{el.author ? el.author : 'anonymous'}</p>
+          <p><span className={d.mailer}>Date: </span>{el.date}</p>
+          <p><span className={d.mailer}>Time: </span>{el.time}</p>
         </div>
       </div>
-    </div>
+    </div>)}
+    
+    
+    </>
   )
 }
 

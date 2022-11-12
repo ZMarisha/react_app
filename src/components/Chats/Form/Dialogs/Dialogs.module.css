@@ -1,20 +1,17 @@
 .dialogs {
     display: grid;
-    min-height: 100px;
-    max-height: 400px;
     box-sizing: border-box;
     padding: 10px;
     margin-bottom: 20px;
     margin-right: 50px;
 }
 .blockAuthor {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-end;
     font-size: 14px;
-}
-.blockAuthor div {
-    width: 150px;
-    box-sizing: border-box;
+    color: gray;
 }
 .mailer  {
     font-weight: 600;

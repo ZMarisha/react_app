@@ -3,11 +3,10 @@ import d from './Checkbox.module.css'
 
 const Checkbox = () => {
   
-    const isChanged = useSelector(state => state);
+    const isChanged = useSelector(state => state.profile.valueCheckbox);
     const dispatch = useDispatch();
-    const wasChanged = () => {
-        return dispatch({type: 'TOGGLE_ACTION'})
-    }
+    const wasChanged = () => dispatch({type: 'TOGGLE_ACTION'});
+    
     return (
         <>
         <input className={d.input} type='checkbox' onChange={wasChanged} value={isChanged} />
