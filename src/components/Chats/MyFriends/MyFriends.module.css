@@ -4,12 +4,21 @@
     min-height: 650px;
     width: 180px;
   }
+  .addFriend {
+    display: flex;
+    align-items: center;
+  }
 .headering {
     padding-left: 16px;
+    font-size: 26px;
 }
 .link {
   text-decoration: none;
 }
 .link:hover {
   text-decoration: underline;
+}
+.border {
+  border-radius: 20px;
+  margin-bottom: 10px;
 }

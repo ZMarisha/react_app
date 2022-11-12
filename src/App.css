@@ -2,6 +2,13 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background: #22335e;
+}
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
 .app-wrapper {
   display: grid;
   grid-template-areas: 
@@ -10,6 +17,9 @@
   grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 10fr;
   gap: 30px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
 }
 .main {
   grid-area: c;

@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme} from '@mui/material/styles';
 import { Button } from '@mui/material';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Profile from './components/Profile/Profile.jsx';
 import Chats from './components/Chats/Chats.jsx';
 import Settings from './components/Settings/Settings';
@@ -22,7 +22,7 @@ const darkTheme = createTheme({
     primary: {
       main: '#0d47a1',
       text: '#fafafa',
-      border: '2px solid #0d47a1',
+      border: '1px solid #0d47a1',
     },
   },
 });
@@ -33,7 +33,7 @@ const lightTheme = createTheme({
     primary: {
         main: '#64b5f6',
         text: '#212121',
-        border: '2px solid #64b5f6',
+        border: '1px solid #64b5f6',
       },
     }
   })
@@ -70,14 +70,13 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <div className='container parent app-wrapper'>
         <Header myProfile={myProfile}/>
         <NavBar />
-        <main className='main'>
+        <main className='main' >
           <Routes>
-            <Route path='/' element={<Home />}/>
+            <Route exact path='/' element={<Home />}/>
             <Route path='/profile' element={<Profile myProfile={myProfile}/>} />
             <Route path='/chats' element={<Chats message={message} 
             setMessage={setMessage} 
@@ -92,9 +91,8 @@ const App = () => {
           </Routes>
         </main>
         <Button variant="outlined" sx={{width: '80px', marginBottom: '30px', marginLeft: '40px'}} onClick={() => {setIsDark(prev => !prev)}}>Theme</Button>
-      </div>
-      </ThemeProvider>
-    </BrowserRouter>  
+        </div>
+      </ThemeProvider> 
   )
 }
 
