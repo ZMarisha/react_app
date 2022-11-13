@@ -1,10 +1,12 @@
 import {combineReducers, legacy_createStore as createStore} from 'redux'; 
 import profileReducer from './profileReducer.js';
+import chatsReducer from './chatsReducer.js'
 
 
 
 let reducers = combineReducers({
-    profileReducer,
+    profile: profileReducer,
+    chats: chatsReducer,
 });
 
 let store = createStore(reducers);

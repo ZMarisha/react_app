@@ -3,19 +3,12 @@ import MyFriends from './MyFriends/MyFriends.jsx';
 import d from './Chats.module.css'
 
 
-const Chats = ({message, setMessage, setMessageList, messageList, addDate, addTime}) => {
-
+const Chats = () => {
 
   return (
     <div className={d.dialogs}>
       <MyFriends />
-      <Form message={message} 
-            setMessage={setMessage} 
-            setMessageList={setMessageList} 
-            messageList={messageList} 
-            addDate={addDate} 
-            addTime={addTime}
-        />
+      <Form />
     </div>
     
   )

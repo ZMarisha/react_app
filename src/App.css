@@ -3,23 +3,26 @@
   padding: 0;
 }
 body {
-  background: #22335e;
+  background: url(https://i.ytimg.com/vi/mc07snLnsY8/maxresdefault.jpg) no-repeat;
+  background-size: cover;
 }
 .container {
   max-width: 1140px;
   margin: 0 auto;
 }
 .app-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: grid;
   grid-template-areas: 
   "h h"
   "n c";
   grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 10fr;
-  gap: 30px;
+  gap: 15px;
   background: white;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 15px;
+  border-radius: 30px;
 }
 .main {
   grid-area: c;

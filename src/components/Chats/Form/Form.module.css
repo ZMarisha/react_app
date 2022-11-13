@@ -1,6 +1,7 @@
 .main {
     margin-top: 52px;
     display: grid;
+    margin-left: 30px;
 }
 .form {
     margin-top: 50px;
@@ -9,7 +10,7 @@
     align-self: flex-end;
 }
 .form textarea {
-    min-height: 120px;
+    min-height: 100px;
     background: #F0F2F6;
     font-size: 20px;
     padding: 15px;
