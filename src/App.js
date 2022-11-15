@@ -10,7 +10,7 @@ import Chats from './components/Chats/Chats.jsx';
 import Settings from './components/Settings/Settings';
 import NotFound from './components/NotFound/NotFound.jsx';
 import Home from './components/Home/Home';
-import Dialogs from './components/Chats/Form/Dialogs/Dialogs';
+import Dialogs from './components/Chats/FormContainer/Form/Dialogs/Dialogs';
 import {darkTheme, lightTheme} from '../src/theme/theme'
 
 const App = () => {

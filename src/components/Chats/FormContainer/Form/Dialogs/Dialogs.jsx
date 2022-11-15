@@ -9,19 +9,14 @@ const Dialogs = ({messageList}) => {
 
   const { chatId } = useParams();
 
-
   let message1 = messageList.filter(el => chatId === el.id);
-  console.log(messageList)
-  console.log(message1)
   
   const theme = useTheme();
-
 
 
   return (
     <>
   {message1.map((el, i) => <div key={i} className={d.dialogs} style={{border: theme.palette.primary.border}}>
-
       <p className={d.text}>{el.text}</p>
       <div className={d.blockAuthor}>
         <div>
@@ -31,8 +26,7 @@ const Dialogs = ({messageList}) => {
         </div>
       </div>
     </div>)}
-    
-    
+     
     </>
   )
 }

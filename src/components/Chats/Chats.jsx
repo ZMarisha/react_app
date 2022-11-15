@@ -1,14 +1,15 @@
-import Form from './Form/Form.jsx';
-import MyFriends from './MyFriends/MyFriends.jsx';
+import React from 'react';
 import d from './Chats.module.css'
+import FormContainer from './FormContainer/FormContainer.js';
+import MyFriendsContainer from './MyFriendsContainer/MyFriendsContainer';
 
 
 const Chats = () => {
 
   return (
     <div className={d.dialogs}>
-      <MyFriends />
-      <Form />
+      <MyFriendsContainer />
+      <FormContainer />
     </div>
     
   )
