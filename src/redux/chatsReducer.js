@@ -1,21 +1,3 @@
-export function addDate() {
-    let date = new Date();
-    let year = date.getFullYear();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    
-    return `${year}.${month}.${day}`
-  }
-
- export function addTime() {
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-
-    return `${hours}:${minutes}:${seconds}`
-  }
-
 let initialState = {
     myFriend: [],
     myNewFriend: {},
@@ -26,7 +8,6 @@ let initialState = {
 const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'FRIENDS': 
-        console.log(action.message)
             let myNewFriend = action.data
             return {...state, myFriend: myNewFriend};
         case 'NEW_FRIEND': 
@@ -46,6 +27,14 @@ const chatsReducer = (state = initialState, action) => {
             return state;
     }
 
+};
+
+
+
+export const addRobotThunk = (messageList, chatId, postDate, postTime, ROBOT) => (dispatch) => {
+    if (messageList.length > 0 && messageList.slice(-1)[0].author !== 'ROBOT') {
+        setTimeout(() => dispatch({type: 'ADD_ROBOT', robot: {id: chatId, author: 'ROBOT', text: ROBOT, date: postDate, time: postTime}}), 1500)
+    }
 }
 
 export default chatsReducer;
