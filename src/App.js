@@ -12,6 +12,8 @@ import NotFound from './components/NotFound/NotFound.jsx';
 import Home from './components/Home/Home';
 import Dialogs from './components/Chats/FormContainer/Form/Dialogs/Dialogs';
 import {darkTheme, lightTheme} from '../src/theme/theme'
+import News from './components/News/News';
+import Article from './components/News/Article/Article';
 
 const App = () => {
 
@@ -29,6 +31,8 @@ const App = () => {
             <Route path='/chats' element={<Chats /> }>
               <Route path=':chatId' element={<Dialogs />}/>
             </Route>
+            <Route path='/news' element={<News />}/>
+            <Route path='news/:newsId' element={<Article />}/>
             <Route path='/settings' element={<Settings />} />
             <Route path='*' element={<NotFound />}/>
           </Routes>

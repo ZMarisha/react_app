@@ -20,6 +20,9 @@ const NavBar = () => {
           <CustomLink to='/chats'>Chats</CustomLink>
         </div>
         <div className={d.block}>
+          <CustomLink to='/news'>News</CustomLink>
+        </div>
+        <div className={d.block}>
           <CustomLink to='/settings'>Settings</CustomLink>
         </div>
       </nav>
