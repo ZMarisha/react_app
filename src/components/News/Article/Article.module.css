@@ -1,0 +1,8 @@
+.article {
+    position: relative;
+}
+.article h2 {
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
