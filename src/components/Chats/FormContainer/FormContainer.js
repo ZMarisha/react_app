@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {addDate, addTime} from '../../../otherFunctions/otherFunctions';
 import { addRobotThunk } from "../../../redux/chatsReducer";
+import { addNewPost, getAllPosts } from "../../../firebase/crud";
 
 const FormContainer = () => {
 
@@ -11,6 +12,7 @@ const ROBOT = 'Hi! I am Robot. I got your message!';
 
   const { chatId } = useParams();
   const messageList = useSelector(state => state.chats.messageList);
+  console.log(messageList)
   
   let inputText = useSelector(state => state.chats.value)
   const dispatch = useDispatch();
@@ -23,24 +25,28 @@ const ROBOT = 'Hi! I am Robot. I got your message!';
   let postDate = addDate();
   let postTime = addTime();
 
+  const getPostHandler = async() => {
+    let data = await getAllPosts();
+    data.map(el => dispatch({type: 'ADD_MESSAGE', message: {id: el.id, text: el.text, author: el.author, time: el.time, date: el.date}}))
+  }
+
   let addPost = (e) => {
     e.preventDefault();
     if (inputText.length > 0) {
-      dispatch({type: 'ADD_MESSAGE', message: {id: chatId, text: inputText, author: '', time: postTime, date: postDate}});
+      let data = {
+        id: chatId, text: inputText, author: '', time: postTime, date: postDate
+      };
+      //dispatch({type: 'ADD_MESSAGE', message: {id: chatId, text: inputText, author: '', time: postTime, date: postDate}});
+      addNewPost(data);
+      getPostHandler();
     }
   };
+
 
   useEffect(() => {
     dispatch(addRobotThunk(messageList, chatId, postDate, postTime, ROBOT));
   }, [dispatch, messageList, chatId, postDate, postTime, ROBOT]);
 
-   
-  // useEffect(() => {
-
-  //   if (messageList.length > 0 && messageList.slice(-1)[0].author !== 'ROBOT') {
-  //     setTimeout(() => dispatch({type: 'ADD_ROBOT', robot: {id: chatId, author: 'ROBOT', text: ROBOT, date: postDate, time: postTime}}), 1500)
-  //     }
-  //   }, [dispatch, messageList, postDate, postTime, chatId]);
 
   return (
     <Form addPost={addPost} changeText={changeText} textareaRef={textareaRef} messageList={messageList} inputText={inputText}/>

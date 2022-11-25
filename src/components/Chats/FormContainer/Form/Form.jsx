@@ -1,10 +1,10 @@
 import Dialogs from "../Form/Dialogs/Dialogs";
 import React from 'react';
 import { Button } from '@mui/material';
-import d from './Form.module.css'
-
+import d from './Form.module.css';
 
   const Form = ({addPost, changeText, textareaRef, messageList, inputText}) => {
+
   
   return (
     <div className={d.main}>

@@ -33,7 +33,8 @@ const MyFriends = ({addFriends, deleteFriend, theme, dialogs}) => {
             ])}
             </div>
             <div className={d.btn}>
-            <Button onClick={addFriends} variant='contained' size='large' sx={{ fontWeight: '600', minWidth: '25px', fontSize: '16px', height: '50px', marginTop: '30px', borderRadius: '50%'}} 
+            <Button onClick={addFriends} variant='contained' size='large' sx={{ fontWeight: '600', minWidth: '25px', 
+            fontSize: '16px', height: '50px', marginTop: '30px', borderRadius: '50%'}} 
                 type='submit' >+</Button>
             </div>
             

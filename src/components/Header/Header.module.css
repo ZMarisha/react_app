@@ -12,3 +12,22 @@
     font-size: 26px;
     font-weight: 400;
 }
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+.login a {
+    color: black !important;
+}
+.btnLog {
+    padding: 5px;
+    border-radius: 5px;
+}
+.logout {
+    background: white;
+    display: block;
+    border: none;
+    font-size: 18px;
+}

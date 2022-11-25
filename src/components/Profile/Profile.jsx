@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Profile = () => {
 
-    const myAvatarka = useSelector(state => state.profile.myProfile.avatarka)
+    const myAvatarka = useSelector(state => state.profile.myProfile.avatarka);
 
     const theme = useTheme();
     return (

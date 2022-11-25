@@ -9,7 +9,7 @@ const CustomLink = ({children, to}) => {
     });
 
     return (
-        <Link to={to} style={{color: match ? 'black' : 'white'}}>{children}</Link>
+        <Link to={to} style={{color: match ? 'black' : 'white', textDecoration: 'none'}}>{children}</Link>
     )
 };
 
