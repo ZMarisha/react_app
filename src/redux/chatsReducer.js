@@ -20,9 +20,13 @@ const chatsReducer = (state = initialState, action) => {
         case 'ADD_TEXT':
             return {...state, value: action.inputText};
         case 'ADD_MESSAGE':
-            return {...state, messageList: [...state.messageList, action.message], value: ''};
+            console.log(action)
+            return {...state, messageList: [...state.messageList, action.payload]};
         case 'ADD_ROBOT':
             return {...state, messageList: [...state.messageList, action.robot]}
+            //TODO Добавил Андрей
+        case 'FETCH_MESSAGES':
+            return {...state, messageList: [...action.payload]}
         default:
             return state;
     }

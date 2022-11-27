@@ -10,7 +10,7 @@ const Dialogs = ({messageList}) => {
   const { chatId } = useParams();
   console.log(chatId)
 
-   let message1 = messageList.filter(el => chatId === el.id);
+  let message1 = messageList.filter(el => chatId === el.id);
   
   const theme = useTheme();
 
