@@ -23,10 +23,9 @@ const chatsReducer = (state = initialState, action) => {
             console.log(action)
             return {...state, messageList: [...state.messageList, action.payload]};
         case 'ADD_ROBOT':
-            return {...state, messageList: [...state.messageList, action.robot]}
-            //TODO Добавил Андрей
+            return {...state, messageList: [...state.messageList, action.robot]};
         case 'FETCH_MESSAGES':
-            return {...state, messageList: [...action.payload]}
+            return {...state, messageList: [...action.payload], value: ''};
         default:
             return state;
     }

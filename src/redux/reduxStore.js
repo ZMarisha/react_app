@@ -26,7 +26,7 @@ const persistConfig = {
     stateReconclier:hardSet
 };
 
-const persistedReducer = persistReducer(persistConfig, RootReducer);
+persistReducer(persistConfig, RootReducer);
 const store = createStore(RootReducer, 
     composeEnhancers(applyMiddleware(thunk))
 );

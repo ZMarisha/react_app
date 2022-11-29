@@ -8,7 +8,7 @@ import d from './Form.module.css';
   
   return (
     <div className={d.main}>
-      <Dialogs messageList={messageList}/>
+      <Dialogs messageList={messageList} />
       <form className={d.form} onSubmit={addPost}>
         <textarea ref={textareaRef} onChange={changeText} value={inputText} placeholder='input your message...' />
         <div className={d.btnSend}>

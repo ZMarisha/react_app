@@ -1,3 +1,6 @@
+.posts {
+    position: relative;
+}
 .dialogs {
     display: grid;
     box-sizing: border-box;
