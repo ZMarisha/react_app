@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {addDate, addTime} from '../../../otherFunctions/otherFunctions';
 import { addRobotThunk } from "../../../redux/chatsReducer";
+import { addNewPost, getAllPosts } from "../../../firebase/crud";
 
 const FormContainer = () => {
 
@@ -22,25 +23,42 @@ const ROBOT = 'Hi! I am Robot. I got your message!';
     
   let postDate = addDate();
   let postTime = addTime();
+  
+  
+  useEffect(()=>{
+    dispatch({type: 'PRELOADER', isPreloader: true});
+    let posts = getAllPosts().then(data => {
+      dispatch({type:"FETCH_MESSAGES", payload:data});
+      dispatch({type: 'PRELOADER', isPreloader: false});
+    })
+    .catch ((e) => {
+      dispatch({type: 'ERROR', error: true});
+      console.log(e.message)
+    })
+    console.log(posts)
+  },[dispatch])
+
+  const getPostHandler = async() => {
+    let data = await getAllPosts();
+    dispatch({type:"FETCH_MESSAGES", payload:data});
+  }
 
   let addPost = (e) => {
     e.preventDefault();
     if (inputText.length > 0) {
-      dispatch({type: 'ADD_MESSAGE', message: {id: chatId, text: inputText, author: '', time: postTime, date: postDate}});
+      let data = {
+        id: chatId, text: inputText, author: '', time: postTime, date: postDate
+      };
+      addNewPost(data);
+      getPostHandler();
     }
   };
+
 
   useEffect(() => {
     dispatch(addRobotThunk(messageList, chatId, postDate, postTime, ROBOT));
   }, [dispatch, messageList, chatId, postDate, postTime, ROBOT]);
 
-   
-  // useEffect(() => {
-
-  //   if (messageList.length > 0 && messageList.slice(-1)[0].author !== 'ROBOT') {
-  //     setTimeout(() => dispatch({type: 'ADD_ROBOT', robot: {id: chatId, author: 'ROBOT', text: ROBOT, date: postDate, time: postTime}}), 1500)
-  //     }
-  //   }, [dispatch, messageList, postDate, postTime, chatId]);
 
   return (
     <Form addPost={addPost} changeText={changeText} textareaRef={textareaRef} messageList={messageList} inputText={inputText}/>

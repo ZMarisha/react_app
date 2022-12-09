@@ -2,11 +2,14 @@ import React from 'react';
 import d from './NavBar.module.css';
 import { useTheme } from '@emotion/react';
 import CustomLink from '../CustomLink/CustomLink';
+//import { useAuth } from '../../hook/useAuth';
 
 
 const NavBar = () => {
 
-  const theme = useTheme()
+  const theme = useTheme();
+  
+  
 
     return (
       <nav className={d.navBar} style={{background: theme.palette.primary.main}}>
@@ -25,6 +28,9 @@ const NavBar = () => {
         <div className={d.block}>
           <CustomLink to='/settings'>Settings</CustomLink>
         </div>
+        {/* <div className={d.block} >
+          <CustomLink to='/logout'>Log out</CustomLink>
+        </div> */}
       </nav>
     )
 }

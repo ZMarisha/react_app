@@ -29,7 +29,7 @@ const Article = () => {
     return (
         <div className={d.article}>
             <div>{isPreloader ? <Preloader /> : null}</div>
-            <div className={d.error}>{ isError ? <Error /> : <><Button className={d.btn} onClick={() => {
+            <div className={d.error}>{ isError ? <Error /> : <><Button onClick={() => {
                 navigate(-1)
              }} variant='contained' size='large' sx={{ fontWeight: '600', width: '120px', marginTop: '20px' }} type='submit'>GO BACK</Button>
             {article && (

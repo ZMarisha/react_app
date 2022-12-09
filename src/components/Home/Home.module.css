@@ -1,0 +1,14 @@
+.parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.facts {
+    font-size: 12px;
+    width: 300px;
+    padding-top: 5px;
+    margin-top: 10px;
+}
+.facts img{
+    display: block;
+    height: 190px;
+}

@@ -20,9 +20,12 @@ const chatsReducer = (state = initialState, action) => {
         case 'ADD_TEXT':
             return {...state, value: action.inputText};
         case 'ADD_MESSAGE':
-            return {...state, messageList: [...state.messageList, action.message], value: ''};
+            console.log(action)
+            return {...state, messageList: [...state.messageList, action.payload]};
         case 'ADD_ROBOT':
-            return {...state, messageList: [...state.messageList, action.robot]}
+            return {...state, messageList: [...state.messageList, action.robot]};
+        case 'FETCH_MESSAGES':
+            return {...state, messageList: [...action.payload], value: ''};
         default:
             return state;
     }
@@ -33,7 +36,8 @@ const chatsReducer = (state = initialState, action) => {
 
 export const addRobotThunk = (messageList, chatId, postDate, postTime, ROBOT) => (dispatch) => {
     if (messageList.length > 0 && messageList.slice(-1)[0].author !== 'ROBOT') {
-        setTimeout(() => dispatch({type: 'ADD_ROBOT', robot: {id: chatId, author: 'ROBOT', text: ROBOT, date: postDate, time: postTime}}), 1500)
+        setTimeout(() => dispatch({type: 'ADD_ROBOT', robot: {id: chatId, author: 'ROBOT', text: ROBOT, date: postDate, time: postTime}}
+        ),1500)
     }
 }
 
