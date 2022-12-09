@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import MyFriends from "./MyFriends/MyFriends";
 import { useTheme } from '@emotion/react';
 import { useEffect } from 'react';
@@ -14,35 +14,38 @@ const friends = [
 ]
 
 const MyFriendsContainer = () => {
-    const dialogs = useSelector(state => state.chats.myFriend);
-    const newFriend = useSelector(state => state.chats.myNewFriend);
+    let myFriends = useFriends();
+    //console.log(myFriends)
     const dispatch = useDispatch();
-    //console.log(newFriend)
 
     const theme = useTheme();
 
     useEffect(() => {
         setTimeout(() => dispatch({type: 'FRIENDS', data: friends}), 1000)
-    }, [dispatch])
-    // console.log(dialogs);
+    }, [dispatch]);
 
     useEffect(() => {
         setTimeout(() => dispatch({type: 'NEW_FRIEND', friend: {id: 7, name: 'Bars', src: 'https://econet.ru/uploads/pictures/456175/content_photo_1.jpg'}}), 1000)
-    }, [dispatch])
+    }, [dispatch]);
 
     const addFriends = (e)=> {
     e.preventDefault();
-    dispatch({type: 'ADD_FRIEND', user: newFriend});
-    }
+    dispatch({type: 'ADD_FRIEND', user: myFriends.myNewFriend});
+    };
 
-    const deleteFriend = (el) => {
-        let filterFriends = dialogs.filter(obj => obj.id !== el);
-        dispatch({type: 'DELETE_FRIEND', deletedFriend: filterFriends})
-    }
+    const deleteFriend = useCallback(
+        (el) => {
+            let filterFriends = myFriends.myFriend.filter(obj => obj.id !== el);
+            dispatch({type: 'DELETE_FRIEND', deletedFriend: filterFriends});
+    }, [dispatch, myFriends.myFriend]);
+
+    console.log('MyFriends')
 
     return (
-        <MyFriends addFriends={addFriends} deleteFriend={deleteFriend} theme={theme} dialogs={dialogs}/>
+        <MyFriends addFriends={addFriends} deleteFriend={deleteFriend} theme={theme} dialogs={myFriends.myFriend}/>
     )
 }
 
 export default MyFriendsContainer;
+export let selectorFriends = (state) => state.chats;
+const useFriends = () => useSelector(selectorFriends);

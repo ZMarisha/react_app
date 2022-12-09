@@ -1,10 +1,19 @@
 import React from "react";
-import d from './Preloader.module.css'
 
 const Preloader = () => {
     return (
-        <div className={d.preloader}>
-            <img src='https://flevix.com/wp-content/uploads/2019/07/Color-Loading-2.gif' alt='preloader'/>
+        <div style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            background: 'white'
+            }}>
+            <img src='https://flevix.com/wp-content/uploads/2019/07/Color-Loading-2.gif' alt='preloader' style={{
+                display: 'block',
+                objectFit: 'contain',
+                height: 'inherit',
+                width: 'inherit',
+            }}/>
         </div>
     )
 }

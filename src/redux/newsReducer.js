@@ -31,6 +31,7 @@ export const getNewsThunk = () => (dispatch) => {
                 throw new Response('', {status: response.status, statusText: 'Not Found'})}   
             else {
                 let data = await response.json();
+                //console.log(data)
                 dispatch({type: 'NEWS', myNews: data})
                 dispatch({type: 'ERROR', error: false})
             }    
@@ -51,6 +52,7 @@ export const getArticleThunk = (newsId) => (dispatch) => {
                 throw new Response('', {status: res.status, statusText: 'Not Found'})}   
             else {
                 let data = await res.json();
+                console.log(data)
                 dispatch({type: 'GET_ARTICLE', post: data})
                 dispatch({type: 'ERROR', error: false})
             }    

@@ -11,7 +11,7 @@ import Error from '../../../../Error/Error';
 const Dialogs = ({messageList}) => {
 
   const { chatId } = useParams();
-  console.log(chatId);
+  //console.log(chatId);
   const isPreloader = useSelector(state => state.newsPage.preloader);
   const isError = useSelector(state => state.newsPage.error)
 
