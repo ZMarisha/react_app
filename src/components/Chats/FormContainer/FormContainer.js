@@ -35,8 +35,8 @@ const ROBOT = 'Hi! I am Robot. I got your message!';
       dispatch({type: 'ERROR', error: true});
       console.log(e.message)
     })
-    console.log(posts)
-  },[dispatch])
+    // console.log(posts)
+  },[])
 
   const getPostHandler = async() => {
     let data = await getAllPosts();

@@ -40,8 +40,8 @@ const Login = () => {
             <h3>Chat</h3>
             <p>Login</p>
             <form className={d.form} onSubmit={handleSubmit}>
-                <input type='email' placeholder="email" nama='userEmail'/>
-                <input type="password" autoComplete="on"/>
+                <input type='email' placeholder="email" nama='userEmail' aria-label="email"/>
+                <input type="password" autoComplete="on" aria-label="pass"/>
                 <button type='submit'>Sign in</button>
             </form>
             <p>You don't have an account? <Link to='/register' style={{color: 'white'}}>Register</Link></p>

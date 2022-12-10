@@ -8,20 +8,15 @@ let initialState = {
 const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'FRIENDS': 
-            let myNewFriend = action.data
-            return {...state, myFriend: myNewFriend};
+            return {...state, myFriend: action.data};
         case 'NEW_FRIEND': 
-            let newFriend = action.friend
-            return {...state, myNewFriend:newFriend};
+            return {...state, myNewFriend:action.friend};
         case 'ADD_FRIEND': 
             return {...state, myFriend: [...state.myFriend, action.user]};
         case 'DELETE_FRIEND': 
             return {...state, myFriend: action.deletedFriend};
         case 'ADD_TEXT':
             return {...state, value: action.inputText};
-        case 'ADD_MESSAGE':
-            console.log(action)
-            return {...state, messageList: [...state.messageList, action.payload]};
         case 'ADD_ROBOT':
             return {...state, messageList: [...state.messageList, action.robot]};
         case 'FETCH_MESSAGES':

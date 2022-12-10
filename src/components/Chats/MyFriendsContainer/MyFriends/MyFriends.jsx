@@ -42,4 +42,4 @@ const MyFriends = ({addFriends, deleteFriend, theme, dialogs}) => {
     )
 }
 
-export default MyFriends;
+export default React.memo(MyFriends);
