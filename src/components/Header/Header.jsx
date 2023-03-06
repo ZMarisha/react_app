@@ -6,6 +6,7 @@ import { useTheme } from '@emotion/react';
 import { useAuth } from '../../hook/useAuth';
 import CustomLink from '../CustomLink/CustomLink';
 import { useNavigate } from 'react-router-dom';
+import { logoutUser } from '../../redux/registerReducer';
 
 const Header = () => {
 
@@ -17,9 +18,12 @@ const Header = () => {
   const navigate = useNavigate();
   
   const logout = () => { 
-    dispatch({type: 'LOGOUT_USER', deleteUser: {email: null,
-        id: null,
-        token: null}});
+    const deleteUser = {
+      email: null,
+      id: null,
+      token: null
+    }
+    dispatch(logoutUser(deleteUser));
     navigate('/login');
   }
 

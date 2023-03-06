@@ -12,8 +12,8 @@ const Dialogs = ({messageList}) => {
 
   const { chatId } = useParams();
   //console.log(chatId);
-  const isPreloader = useSelector(state => state.newsPage.preloader);
-  const isError = useSelector(state => state.newsPage.error)
+  const isPreloader = useSelector(state => state.news.preloader);
+  const isError = useSelector(state => state.news.error)
 
   let message1 = messageList.filter(el => chatId === el.id);
   

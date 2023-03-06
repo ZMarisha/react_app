@@ -23,7 +23,7 @@ const Login = () => {
     let password = e.target[1].value;
     console.log(email)
   
-    dispatch(loginUserThunk(email, password));
+    dispatch(loginUserThunk({email, password}));
   };
 
 

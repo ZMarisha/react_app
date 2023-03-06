@@ -11,20 +11,18 @@ import Preloader from "../../Preloader/Preloader";
 
 const Article = () => {
    
-    const article = useSelector(state => state.newsPage.article);
+    const article = useSelector(state => state.news.article);
     const dispatch = useDispatch();
     let {newsId} = useParams();
     let navigate = useNavigate();
-    const isPreloader = useSelector(state => state.newsPage.preloader);
-    const isError = useSelector(state => state.newsPage.error)
+    const isPreloader = useSelector(state => state.news.preloader);
+    const isError = useSelector(state => state.news.error)
 
-    console.log(newsId)
     
     useEffect(() => {
-        dispatch(getArticleThunk(newsId))
+        dispatch(getArticleThunk({newsId}))
     },[newsId, dispatch]);
 
-    console.log(article)
     
     return (
         <div className={d.article}>

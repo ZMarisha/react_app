@@ -23,6 +23,9 @@ const NavBar = () => {
           <CustomLink to='/chats'>Chats</CustomLink>
         </div>
         <div className={d.block}>
+          <CustomLink to='/findfriends'>Find Friends</CustomLink>
+        </div>
+        <div className={d.block}>
           <CustomLink to='/news'>News</CustomLink>
         </div>
         <div className={d.block}>

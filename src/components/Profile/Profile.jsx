@@ -1,20 +1,17 @@
-import { useTheme } from '@emotion/react';
-import d from './Profile.module.css'
-import Checkbox from './Checkbox/Checkbox';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import MyPosts from './MyPosts/MyPosts';
+import MyPhotos from './MyPhotos/MyPhotos';
+import AboutMe from './AboutMe/AboutMe';
+
+
 
 const Profile = () => {
 
-    const myAvatarka = useSelector(state => state.profile.myProfile.avatarka);
-
-    const theme = useTheme();
     return (
         <div>
-            <h1>My Profile</h1>
-            <div className={d.profile} style={{border: theme.palette.primary.border}}>
-                <img src={myAvatarka} alt='myAvatar'/>
-            </div>
-            <Checkbox />
+            <AboutMe />
+            <MyPhotos />
+            <MyPosts />
         </div>
     )
 }

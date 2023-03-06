@@ -8,11 +8,10 @@ import Error from "../Error/Error";
 
 const News = () => {
 
-    const news = useSelector(state => state.newsPage.newsWorld);
     const dispatch = useDispatch();
-    const isPreloader = useSelector(state => state.newsPage.preloader);
-    const isError = useSelector(state => state.newsPage.error)
-    console.log(isError)
+    const newsData = useSelector(state => state.news.newsWorld);
+    const isPreloader = useSelector(state => state.news.preloader);
+    const isError = useSelector(state => state.news.error);
 
     useEffect(() => {
         dispatch(getNewsThunk())
@@ -25,7 +24,7 @@ const News = () => {
             <>
             <h1>Current News</h1>
             {<ul className={d.list}>
-                {news.map((el, i) => (
+                {newsData.map((el, i) => (
                 <Link key={i} to={`/news/${el.id}`}><li>{el.title}</li></Link>))}
             </ul>}</>  
         </div>

@@ -21,4 +21,5 @@ const app = initializeApp(firebaseConfig);
 // Модули, используемые в проекте(аутентификация и firestore)
 export const firestore = getFirestore(app);
 export const auth = getAuth(app);
+console.log(auth)
 export const storage = getStorage(app);

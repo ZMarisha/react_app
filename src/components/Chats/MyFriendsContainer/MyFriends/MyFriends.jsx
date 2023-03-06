@@ -7,15 +7,19 @@ import d from './MyFriends.module.css';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Preloader from '../../../Preloader/Preloader';
+import Error from '../../../Error/Error';
 
 
 
 
-const MyFriends = ({addFriends, deleteFriend, theme, dialogs}) => {
+const MyFriends = ({addFriends, deleteFriend, theme, dialogs, isError, isPreloader}) => {
 
     return (
         <div className={d.parent} style={{border: theme.palette.primary.border}}>
-            <h1 className={d.headering}>My friends</h1>
+            <div className={d.error}>{ isError ? <Error /> : null}</div>
+            <div>{isPreloader ? <Preloader /> : null}</div>
+            <><h1 className={d.headering}>My friends</h1>
             <div className={d.navBar}>
             {dialogs.map((el, index) => [
                 <div key={index} className={d.border} style={{border: theme.palette.primary.border}} >
@@ -36,7 +40,7 @@ const MyFriends = ({addFriends, deleteFriend, theme, dialogs}) => {
             <Button onClick={addFriends} variant='contained' size='large' sx={{ fontWeight: '600', minWidth: '25px', 
             fontSize: '16px', height: '50px', marginTop: '30px', borderRadius: '50%'}} 
                 type='submit' >+</Button>
-            </div>
+            </div></>
             
         </div>
     )

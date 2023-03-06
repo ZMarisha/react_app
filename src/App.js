@@ -17,6 +17,7 @@ import Article from './components/News/Article/Article';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import PrivateRoutes from './components/Private/Private';
+import FindFriendsContainer from './components/FindFriends/FindFriendsContainer';
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
               <Route path='/chats' element={<Chats /> }>
                 <Route path=':chatId' element={<Dialogs />}/>
               </Route>
+              <Route path='/findfriends' element={<FindFriendsContainer />} />
               <Route path='/news' element={<News />}/>
               <Route path='news/:newsId' element={<Article />}/>
               <Route path='/settings' element={<Settings />} />
