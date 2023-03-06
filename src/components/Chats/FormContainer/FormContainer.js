@@ -1,46 +1,37 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Form from "./Form/Form";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {addDate, addTime} from '../../../otherFunctions/otherFunctions';
-import { addRobotThunk } from "../../../redux/chatsReducer";
+import { fetchMessages, addText, getAllPostsThunk, addRobot } from "../../../redux/chatsReducer";
 import { addNewPost, getAllPosts } from "../../../firebase/crud";
+
 
 const FormContainer = () => {
 
-const ROBOT = 'Hi! I am Robot. I got your message!';
 
   const { chatId } = useParams();
+  const ROBOT = useSelector(state => state.chats.robot);
   const messageList = useSelector(state => state.chats.messageList);
   
   let inputText = useSelector(state => state.chats.value)
   const dispatch = useDispatch();
-  const textareaRef = useRef('');
+
     
   let changeText = (e) => {
-    dispatch({type: 'ADD_TEXT', inputText: e.target.value})
+    dispatch(addText(e.target.value))
   }
     
   let postDate = addDate();
   let postTime = addTime();
   
-  
   useEffect(()=>{
-    dispatch({type: 'PRELOADER', isPreloader: true});
-    let posts = getAllPosts().then(data => {
-      dispatch({type:"FETCH_MESSAGES", payload:data});
-      dispatch({type: 'PRELOADER', isPreloader: false});
-    })
-    .catch ((e) => {
-      dispatch({type: 'ERROR', error: true});
-      console.log(e.message)
-    })
-    // console.log(posts)
-  },[])
+    dispatch(getAllPostsThunk())
+  },[dispatch])
 
   const getPostHandler = async() => {
     let data = await getAllPosts();
-    dispatch({type:"FETCH_MESSAGES", payload:data});
+    dispatch(fetchMessages(data));
   }
 
   let addPost = (e) => {
@@ -52,16 +43,20 @@ const ROBOT = 'Hi! I am Robot. I got your message!';
       addNewPost(data);
       getPostHandler();
     }
+    answerRobot();
+  };
+
+  const answerRobot = () => {
+    if (messageList.length > 0 && messageList.slice(-1)[0].author !== 'ROBOT') {
+        setTimeout(() => dispatch(addRobot({id: chatId, author: 'ROBOT', text: ROBOT, date: postDate, time: postTime})
+        ),1500)
+    }
   };
 
 
-  useEffect(() => {
-    dispatch(addRobotThunk(messageList, chatId, postDate, postTime, ROBOT));
-  }, [dispatch, messageList, chatId, postDate, postTime, ROBOT]);
-
 
   return (
-    <Form addPost={addPost} changeText={changeText} textareaRef={textareaRef} messageList={messageList} inputText={inputText}/>
+    <Form addPost={addPost} changeText={changeText} messageList={messageList} inputText={inputText}/>
   )
 }
 

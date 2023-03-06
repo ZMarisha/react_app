@@ -3,6 +3,7 @@ import MyFriends from "./MyFriends/MyFriends";
 import { useTheme } from '@emotion/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllFriends, addFriend, deleteThisFriend, loadingInProgress } from "../../../redux/chatsReducer";
 
 const friends = [
     {id: 1, name: 'Anna', src: 'https://vibir.ru/wp-content/uploads/2019/10/tematicheskie-avatarki.jpg'},
@@ -14,35 +15,46 @@ const friends = [
 ]
 
 const MyFriendsContainer = () => {
-    let myFriends = useFriends();
-    //console.log(myFriends)
+    
     const dispatch = useDispatch();
-
     const theme = useTheme();
+    let myFriends = useFriends();
+    const isError = useSelector(state => state.chats.error);
+    const isPreloader = useSelector(state => state.chats.preloader);
+    
+
 
     useEffect(() => {
-        setTimeout(() => dispatch({type: 'FRIENDS', data: friends}), 1000)
+        dispatch(loadingInProgress(true));
+        setTimeout(() => {
+            dispatch(getAllFriends(friends));
+            dispatch(loadingInProgress(false));
+        }, 300)
     }, [dispatch]);
 
-    useEffect(() => {
-        setTimeout(() => dispatch({type: 'NEW_FRIEND', friend: {id: 7, name: 'Bars', src: 'https://econet.ru/uploads/pictures/456175/content_photo_1.jpg'}}), 1000)
-    }, [dispatch]);
+    // useEffect(()=>{
+    //     dispatch(getAllFriendsThunk())
+    //   },[dispatch])
+
+    // useEffect(() => {
+    //     setTimeout(() => dispatch({type: 'NEW_FRIEND', friend: {id: 7, name: 'Bars', src: 'https://econet.ru/uploads/pictures/456175/content_photo_1.jpg'}}), 1000)
+    // }, [dispatch]);
+
 
     const addFriends = (e)=> {
     e.preventDefault();
-    dispatch({type: 'ADD_FRIEND', user: myFriends.myNewFriend});
+    dispatch(addFriend({id: 7, name: 'Bars', src: 'https://econet.ru/uploads/pictures/456175/content_photo_1.jpg'}));
     };
 
     const deleteFriend = useCallback(
         (el) => {
             let filterFriends = myFriends.myFriend.filter(obj => obj.id !== el);
-            dispatch({type: 'DELETE_FRIEND', deletedFriend: filterFriends});
-    }, [dispatch, myFriends.myFriend]);
+            dispatch(deleteThisFriend(filterFriends));
+    }, [dispatch, myFriends]);
 
-    console.log('MyFriends')
 
     return (
-        <MyFriends addFriends={addFriends} deleteFriend={deleteFriend} theme={theme} dialogs={myFriends.myFriend}/>
+        <MyFriends isPreloader={isPreloader} isError={isError} addFriends={addFriends} deleteFriend={deleteFriend} theme={theme} dialogs={myFriends.myFriend}/>
     )
 }
 

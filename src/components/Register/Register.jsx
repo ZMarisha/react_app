@@ -17,11 +17,11 @@ const Register = () => {
   
   const handleSubmit = async(e) => {
     e.preventDefault()
-    // let displayName = e.target[0].value;
-    let email = e.target[1].value;
-    let password = e.target[2].value;
-    // let file = e.target[4].value;
-    dispatch(registerUserThunk(email, password));
+    let displayName = `${e.target[0].value} ${e.target[1].value}`;
+    console.log(displayName)
+    let email = e.target[2].value;
+    let password = e.target[3].value;
+    dispatch(registerUserThunk({email, password, displayName}));
   }
 
   return !isAuth ? (
@@ -30,14 +30,10 @@ const Register = () => {
             <h3>Chat</h3>
             <p>register</p>
             <form onSubmit={handleSubmit} className={d.form}>
-                <input type='text' name='displayName' placeholder="display name"/>
+                <input type='text' name='displayName' placeholder="first name"/>
+                <input type='text' name='displayName' placeholder="last name"/>
                 <input type='email' name='email' placeholder="email"/>
                 <input type='password' name='password' placeholder='password' autoComplete='on'/>
-                <input  style={{display: 'none'}} type='file' name='file'/>
-                <label htmlFor="file" className={d.avatarka}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Ds_6MHw0J7Ynb45lX_QaD-i10_rkjV7JLX-6zCZlsl79vzTdcB08N9R6DCZh00zigpc&usqp=CAU" alt='add avatarka'/>
-                    <span>Add an avatarka</span>
-                </label>
                 <button>Sign up</button>
             </form>
             <p>You don't have an account. Please, register!</p>

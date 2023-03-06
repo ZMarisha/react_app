@@ -1,0 +1,14 @@
+.posts {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.form {
+    display: grid;
+}
+.form textarea {
+    min-height: 80px;
+    background: #F0F2F6;
+    font-size: 24px;
+    padding-left: 30px;
+    border: none;
+}

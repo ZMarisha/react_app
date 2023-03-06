@@ -15,7 +15,7 @@ const Error = () => {
 
     return (
         <div className={d.error}>
-            <h1>ERROR!</h1>
+            <h1>An error has occurred</h1>
             <Button onClick={reload} variant='contained' size='large' sx={{ fontWeight: '600', width: '120px', marginTop: '20px' }} type='submit'>RELOAD</Button>
         </div>
     )
