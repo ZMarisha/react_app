@@ -2,10 +2,11 @@ import { createUserWithEmailAndPassword, } from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { addAboutMe, addUserAvatar } from "../firebase/crud";
 
 let initialState = {
     user: {},
-    err: false
+    err: false,
 };
 
 // const registerReducer = (state = initialState, action) => {
@@ -33,8 +34,11 @@ export const registerUserThunk = createAsyncThunk(
                 email: res.user.email,
                 id: res.user.uid,
                 token: res.user.accessToken,
+                displayName: displayName
             };
-
+            const {id} = newUser;
+            addAboutMe(displayName, id)
+            addUserAvatar(id)
             return newUser
         } catch(e) {
             console.log(e.code, e.message)

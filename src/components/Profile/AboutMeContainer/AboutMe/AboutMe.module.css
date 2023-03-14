@@ -1,0 +1,77 @@
+.profile {
+    display: flex;  
+}
+.avatarka {
+    height: 320px;
+    width: 240px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-rows: 1fr 30px;
+}
+.blockAvatar {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.imgAvatarka {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.btnAvatarka {
+    width: 100%;
+    background: white;
+    opacity: 0.4;
+    height: 30px;
+    border-top: 0px;
+    font-size: 16px;
+}
+.uploadPhoto {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    opacity: 0.4;
+    position: relative;
+}
+.description {
+    margin-left: 30px;
+}
+.description h1{
+    padding-bottom: 15px;
+}
+.description p {
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.description p span {
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+.editing {
+    display: none;
+}
+.userName {
+    display: flex;
+    align-items: center;
+}
+.editName {
+    height: 40px;
+    width: 350px;
+    font-size: 24px;
+}
+.topBbtnSave {
+    opacity: 0.4;
+    margin-left: 20px;
+}
+.topBbtnSave input {
+    margin-left: 10px;
+}
+.bottom_btn_save {
+    opacity: 0.4;
+    padding-left: 10px;
+}
+.bottom_btn_save input {
+    margin-left: 10px;
+}

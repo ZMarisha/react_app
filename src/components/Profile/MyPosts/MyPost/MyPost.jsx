@@ -7,7 +7,7 @@ const MyPost = ({myPosts, id}) => {
     return (
 
         <ul className={d.post}>
-            {myPosts.length > 0 ? myPosts.map((item, index) => item.id === id ? <li key={index}>{item.post}</li>: null) : 'Not Posts'}
+            {myPosts.length > 0 ? myPosts.map((item, index) => item.id === id ? <li key={index}>{item.post}</li>: null) : null}
         </ul>
     )
 };

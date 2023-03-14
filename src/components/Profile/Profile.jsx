@@ -1,7 +1,7 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
 import MyPhotos from './MyPhotos/MyPhotos';
-import AboutMe from './AboutMe/AboutMe';
+import AboutMeContainer from './AboutMeContainer/AboutMeContainer';
 
 
 
@@ -9,7 +9,7 @@ const Profile = () => {
 
     return (
         <div>
-            <AboutMe />
+            <AboutMeContainer />
             <MyPhotos />
             <MyPosts />
         </div>
