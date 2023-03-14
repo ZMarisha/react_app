@@ -1,4 +1,4 @@
-//import {combineReducers, legacy_createStore as createStore, applyMiddleware} from 'redux'; 
+import {combineReducers} from 'redux'; 
 import profileReducer from './profileReducer.js';
 import chatsReducer from './chatsReducer.js';
 import thunk from 'redux-thunk';
@@ -16,12 +16,13 @@ import findFriendsReducer from './findFriendsReducer.js';
 
 //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// let RootReducer = combineReducers({
-//     profile: profileReducer,
-//     chats: chatsReducer,
-//     newsPage: newsReducer,
-//     register: registerReducer,
-// });
+let RootReducer = combineReducers({
+        profile: profileReducer,
+        chats: chatsReducer,
+        news: newsReducer,
+        register: registerReducer,
+        findFriends: findFriendsReducer,
+});
 
 // const persistConfig = {
 //     key: 'root',
@@ -31,13 +32,7 @@ import findFriendsReducer from './findFriendsReducer.js';
 
 //persistReducer(persistConfig, RootReducer);
 const store = configureStore({
-    reducer: {
-        profile: profileReducer,
-        chats: chatsReducer,
-        news: newsReducer,
-        register: registerReducer,
-        findFriends: findFriendsReducer,
-    },
+    reducer: RootReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 })
 

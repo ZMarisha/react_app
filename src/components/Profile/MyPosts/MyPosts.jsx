@@ -10,10 +10,9 @@ import { useEffect } from "react";
 const MyPosts = () => {
 
     const dispatch = useDispatch();
-    const inputText = useSelector(state => state.profile.value);
+    const inputText = useSelector(state => state.profile.valuePost);
     const id = useSelector(state => state.register.user.id);
     const myPosts = useSelector(state => state.profile.posts);
-    console.log(myPosts);
 
     useEffect(()=>{
         dispatch(getAllMyPostsThunk())
@@ -45,10 +44,10 @@ const MyPosts = () => {
         <>
             <h2 className={d.posts}>My posts</h2>
             <form className={d.form} onSubmit={addPost}>
-              <textarea onChange={getValue} placeholder='your post...' />
+              <textarea onChange={getValue} placeholder='your post...' value={inputText}/>
               <Button variant='contained' size='large' sx={{ fontWeight: '600', width: '120px', marginTop: '20px' }} type='submit'>Publish</Button>
             </form>
-            <MyPost myPosts={myPosts} id={id}/>
+            <MyPost myPosts={myPosts} id={id} />
         </>
     )
 };

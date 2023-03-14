@@ -1,5 +1,6 @@
 import d from './MyPhotos.module.css';
 import { ImageList, ImageListItem } from '@mui/material';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 
 const itemData = [
@@ -20,7 +21,12 @@ const MyPhotos = () => {
     return (
         <>
             <h2 className={d.photos}>My photos</h2>
-             <ImageList sx={{ height: 250 }} cols={4} rowHeight={164}>
+            <input  style={{display: 'none'}} type='file' name='file'/>
+            <label htmlFor="file" className={d.uploadPhoto}>
+                <AddAPhotoIcon src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Ds_6MHw0J7Ynb45lX_QaD-i10_rkjV7JLX-6zCZlsl79vzTdcB08N9R6DCZh00zigpc&usqp=CAU" alt='add avatarka'/>
+                <span style={{marginLeft: '20px', fontSize: '16px'}}>Upload photos</span>
+            </label>
+            <ImageList sx={{ height: 250 }} cols={4} rowHeight={164}>
                 {itemData.map((item, index) => (
                     <ImageListItem key={index}>
                         <img
